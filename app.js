@@ -3,6 +3,7 @@ const boxes = document.querySelectorAll(".box");
 const heading = document.querySelector("#heading");
 const winner = document.querySelector(".winner");
 const restartBtn = document.querySelector("#restart");
+const turn = document.querySelector(".turn");
 
 let isXTurn = true;
 const WINNING_PATTERN = [
@@ -19,6 +20,7 @@ const WINNING_PATTERN = [
 // start the game
 const startGame = () => {
   isXTurn = true;
+  turn.textContent = `${isXTurn ? "X" : "O"}'s turn`;
   boxes.forEach((box) => {
     box.textContent = "";
     box.removeEventListener("click", handleClick);
@@ -62,9 +64,10 @@ const isDraw = () => {
 
 // handle click on box
 const handleClick = (event) => {
-  const turn = isXTurn ? "X" : "O";
-  event.target.textContent = turn;
-  if (checkWin(turn)) {
+  const currTurn = isXTurn ? "X" : "O";
+  turn.textContent = `${!isXTurn ? "X" : "O"}'s turn`;
+  event.target.textContent = currTurn;
+  if (checkWin(currTurn)) {
     endGame(false);
   } else if (isDraw()) {
     endGame(true);
@@ -76,4 +79,5 @@ const handleClick = (event) => {
 // event listeners
 restartBtn.addEventListener("click", startGame);
 
+// start game on load
 startGame();
