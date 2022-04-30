@@ -36,6 +36,9 @@ const endGame = (isDraw) => {
     winner.textContent = `${isXTurn ? "X" : "O"} won`;
   }
   winner.classList.add(".show");
+  boxes.forEach((box) => {
+    box.removeEventListener("click", handleClick);
+  });
 };
 
 // change turns
