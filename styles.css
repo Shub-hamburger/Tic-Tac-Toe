@@ -2,6 +2,7 @@
   --text: #2a1e5c;
   --bg: #2a1e5c;
   --btn-bg: #bd75e1;
+  --btn-bg-hover: #9d23da;
 }
 
 * {
@@ -72,6 +73,10 @@
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
+}
+
+#restart:hover {
+  background-color: var(--btn-bg-hover);
 }
 
 @media (max-width: 684px) {
